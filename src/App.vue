@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="content">
-        <router-view></router-view>
+        <router-view :seller="seller"></router-view>
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
     }
   },
   created () {
-    this.$http.get('/api/seller').then((response) => {
+    this.$http.get('/seller').then((response) => {
       response = response.body
       if (response.errno === ERR_OK) {
         this.seller = response.data

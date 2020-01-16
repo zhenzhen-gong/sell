@@ -18,24 +18,7 @@ const seller = appData.seller
 const goods = appData.goods
 const ratings = appData.ratings
 const apiRoutes = express.Router()
-apiRoutes.get('/seller', function(req, res) {
-  res.json({
-    errno: 0,
-    data: seller
-  })
-});
-apiRoutes.get('/goods', function(req, res) {
-  res.json({
-    errno: 0,
-    data: goods
-  })
-});
-apiRoutes.get('/ratings', function(req, res) {
-  res.json({
-    errno: 0,
-    data: ratings
-  })
-})
+
 app.use('/api', apiRoutes)
 
 const HOST = process.env.HOST
@@ -70,8 +53,28 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
-    }
-  },
+    },
+    before(app) {
+      app.get('/seller', function(req, res) {
+        res.json({
+          errno: 0,
+          data: seller
+        })
+      });
+      app.get('/goods', function(req, res) {
+        res.json({
+          errno: 0,
+          data: goods
+        })
+      });
+      app.get('/ratings', function(req, res) {
+        res.json({
+          errno: 0,
+          data: ratings
+        })
+      })
+    },
+  }, 
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
