@@ -258,7 +258,7 @@ export default {
             text-decoration line-through
             font-size 10px
         .cartcontrol-wrapper
-          position absolute
-          right 0
-          bottom 12px
+            position absolute
+            right 0
+            bottom 12px
 </style>

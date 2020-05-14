@@ -13,11 +13,14 @@
       </div>
     </div>
     <div class="content">
+      <keep-alive>
         <router-view :seller="seller"></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
 <script>
+// import {urlParse} from '../src/common/js/url'
 import myheader from '../src/components/header/myheader'
 
 const ERR_OK = 0
@@ -25,7 +28,12 @@ const ERR_OK = 0
 export default {
   data () {
     return {
-      seller: {}
+      seller: {
+      // id: (() => {
+      // let queryParam = urlParse()
+      // return queryParam.id
+      // })
+      }
     }
   },
   created () {
